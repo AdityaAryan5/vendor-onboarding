@@ -1,0 +1,3 @@
+export const scenarioIds=['S1','S2','S3','S4','S5','S6','S7','S8'];
+export const isScenarioKey=(key:string)=>/:scenario:S[1-8]:/.test(key);
+export function dashboardMetrics(rows:any[]){const count=(s:string)=>rows.filter(x=>x.case.status===s).length;const times=rows.filter(x=>x.processingMs!=null).map(x=>Number(x.processingMs)).filter(Number.isFinite);return [['Total cases',rows.length],['Auto-approved %',`${rows.length?Math.round(100*rows.filter(x=>x.case.status==='APPROVED'&&x.decisionSource==='automated').length/rows.length):0}%`],['Pending vendor',count('PENDING_VENDOR')],['Pending reviewer',count('PENDING_REVIEWER')],['Rejected',count('REJECTED')],['Avg. processing',times.length?`${(times.reduce((a,b)=>a+b,0)/times.length/1000).toFixed(1)} s`:'—']];}

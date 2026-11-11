@@ -1,0 +1,5 @@
+import {expect,it} from 'vitest';
+import {dashboardMetrics,isScenarioKey,scenarioIds} from '../lib/dashboard';
+it('separates reviewer approvals and pending owners',()=>{const rows=[{case:{status:'APPROVED'},decisionSource:'automated',processingMs:1000},{case:{status:'APPROVED'},decisionSource:'reviewer',processingMs:3000},{case:{status:'PENDING_VENDOR'},processingMs:null},{case:{status:'PENDING_REVIEWER'},processingMs:null},{case:{status:'REJECTED'},processingMs:null}];expect(Object.fromEntries(dashboardMetrics(rows))).toEqual({'Total cases':5,'Auto-approved %':'20%','Pending vendor':1,'Pending reviewer':1,'Rejected':1,'Avg. processing':'2.0 s'});});
+it('handles no completed cases',()=>expect(Object.fromEntries(dashboardMetrics([]))['Avg. processing']).toBe('—'));
+it('recognizes only trusted fixture keys',()=>{expect(scenarioIds).toHaveLength(8);expect(isScenarioKey('owner:scenario:S8:uuid')).toBe(true);expect(isScenarioKey('owner:ordinary-uuid')).toBe(false);expect(isScenarioKey('owner:scenario:S9:uuid')).toBe(false);});

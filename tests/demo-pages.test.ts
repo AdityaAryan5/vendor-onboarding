@@ -1,0 +1,4 @@
+import React from 'react';import {renderToStaticMarkup} from 'react-dom/server';import {expect,it,vi} from 'vitest';import {LiveStepper,PolicyPage} from '../components/demo-pages';import {india} from '../config/countries/india';import {disclaimer} from '../lib/types';
+vi.stubGlobal('React',React);
+it('shows all seven queued stages before any progress arrives',()=>{const html=renderToStaticMarkup(React.createElement(LiveStepper,{}));expect((html.match(/<li /g)||[]).length).toBe(7);expect(html).toContain('Communicate');expect(html).toContain('Parser');expect((html.match(/Waiting for this stage/g)||[]).length).toBe(7);});
+it('renders every configured policy and disclaimer in a scrollable table',()=>{const html=renderToStaticMarkup(React.createElement(PolicyPage));for(const rule of india.rules)expect(html).toContain(rule.name);expect(html).toContain(india.version);expect(html).toContain(disclaimer);expect(html).toContain('overflow-x-auto');});
