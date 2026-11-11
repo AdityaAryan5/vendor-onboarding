@@ -1,0 +1,10 @@
+import {it,expect,vi,afterEach} from 'vitest';
+vi.mock('../lib/db',()=>({pool:{}}));
+import {clientAddress,readLimited,checkFileSize} from '../lib/request-limits';
+afterEach(()=>vi.unstubAllEnvs());
+it('does not trust spoofable forwarding headers on a direct host',()=>{vi.stubEnv('VERCEL','');vi.stubEnv('TRUST_PROXY_IP','');expect(clientAddress(new Request('http://example.test',{headers:{'x-forwarded-for':'203.0.113.2'}}))).toBe('shared-untrusted-origin');});
+it('uses the platform supplied address on Vercel',()=>{vi.stubEnv('VERCEL','1');expect(clientAddress(new Request('http://example.test',{headers:{'x-vercel-forwarded-for':'203.0.113.2','x-forwarded-for':'192.0.2.5'}}))).toBe('203.0.113.2');});
+it('rejects oversized streamed bodies without Content-Length',async()=>{const body=new ReadableStream({start(c){c.enqueue(new Uint8Array(7));c.enqueue(new Uint8Array(7));c.close();}});const req=new Request('http://test',{method:'POST',body,duplex:'half'} as RequestInit);await expect(readLimited(req,10)).rejects.toMatchObject({status:413});});
+it('enforces the per-file byte cap',()=>{expect(()=>checkFileSize(new File([new Uint8Array(1_000_001)],'large.pdf'))).toThrow('1 MB');});
+it('accepts the exact file byte boundary',()=>{expect(()=>checkFileSize(new File([new Uint8Array(1_000_000)],'ok.pdf'))).not.toThrow();});
+it('runner exemption requires explicit server-side reviewer authorization',async()=>{vi.stubEnv('RATE_LIMIT_RUNNER','0');const {limitRequest}=await import('../lib/request-limits');expect((await limitRequest(new Request('http://test'),'runner'))?.status).toBe(403);expect(await limitRequest(new Request('http://test'),'runner',true)).toBeNull();});

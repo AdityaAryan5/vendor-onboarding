@@ -1,0 +1,124 @@
+{
+  "id": "S4",
+  "title": "Trading name review",
+  "form": {
+    "legalName": "Acme S4 Private Limited",
+    "tradingName": "Acme Industrial Supplies",
+    "country": "IN",
+    "email": "vendor@example.test",
+    "address": "12 Demo Industrial Road, Mumbai",
+    "state": "27",
+    "pan": "AABCA1205A",
+    "gstin": "27AABCA1205A1ZO",
+    "account": "000076543205",
+    "ifsc": "DEMO0123456",
+    "holderName": "Acme Industrial Supplies"
+  },
+  "files": {
+    "gst": "S4-gst.pdf",
+    "pan": "S4-pan.pdf",
+    "bank": "S4-bank.pdf"
+  },
+  "hashes": {
+    "gst": "42bf68b27e60478bcb41bfc6abcd688cbd3bc2e6b7753d389047a9f61989f708",
+    "pan": "3de4fb70d4bdfaa4c1283d84aa1f52db4a4be563fa8189c2249e6b97a2c8a48c",
+    "bank": "cf0df2007c16fa9c5bddfc7c83571cca3805a98cdc62af1a0614b76753b1453d"
+  },
+  "evidence": {
+    "gst": {
+      "type": "gst",
+      "confidence": 0.99,
+      "fields": {
+        "name": "Acme S4 Private Limited",
+        "pan": null,
+        "gstin": "27AABCA1205A1ZO",
+        "state": "27",
+        "account": null,
+        "ifsc": null,
+        "expiry": null
+      },
+      "evidence": [
+        {
+          "field": "name",
+          "value": "Acme S4 Private Limited",
+          "page": 1,
+          "confidence": 0.99
+        },
+        {
+          "field": "gstin",
+          "value": "27AABCA1205A1ZO",
+          "page": 1,
+          "confidence": 0.99
+        },
+        {
+          "field": "state",
+          "value": "27",
+          "page": 1,
+          "confidence": 0.99
+        }
+      ]
+    },
+    "pan": {
+      "type": "pan",
+      "confidence": 0.99,
+      "fields": {
+        "name": "Acme S4 Private Limited",
+        "pan": "AABCA1205A",
+        "gstin": null,
+        "state": null,
+        "account": null,
+        "ifsc": null,
+        "expiry": null
+      },
+      "evidence": [
+        {
+          "field": "name",
+          "value": "Acme S4 Private Limited",
+          "page": 1,
+          "confidence": 0.99
+        },
+        {
+          "field": "pan",
+          "value": "AABCA1205A",
+          "page": 1,
+          "confidence": 0.99
+        }
+      ]
+    },
+    "bank": {
+      "type": "bank",
+      "confidence": 0.99,
+      "fields": {
+        "name": "Acme Industrial Supplies",
+        "pan": null,
+        "gstin": null,
+        "state": null,
+        "account": "000076543205",
+        "ifsc": "DEMO0123456",
+        "expiry": null
+      },
+      "evidence": [
+        {
+          "field": "name",
+          "value": "Acme Industrial Supplies",
+          "page": 1,
+          "confidence": 0.99
+        },
+        {
+          "field": "account",
+          "value": "000076543205",
+          "page": 1,
+          "confidence": 0.99
+        },
+        {
+          "field": "ifsc",
+          "value": "DEMO0123456",
+          "page": 1,
+          "confidence": 0.99
+        }
+      ]
+    }
+  },
+  "expected": "PENDING_REVIEWER",
+  "cacheProvenance": "fixture-curated: expected evidence from synthetic PDF source, not a fresh AI extraction"
+}

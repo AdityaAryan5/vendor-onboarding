@@ -1,0 +1,6 @@
+import 'dotenv/config';
+import EmbeddedPostgres from 'embedded-postgres';
+import {appendFileSync,rmSync} from 'node:fs';
+import {strict as assert} from 'node:assert';
+async function main(){const dir=`/tmp/vendor-pg-m1-${Date.now()}`;const pg=new EmbeddedPostgres({databaseDir:dir,user:'demo',password:'demo',port:55433,persistent:false,onLog:()=>{},onError:()=>{}});await pg.initialise();appendFileSync(`${dir}/postgresql.conf`,"\nunix_socket_directories = ''\n");await pg.start();try{await pg.createDatabase('vendor_onboarding');process.env.DATABASE_URL='postgresql://demo:demo@127.0.0.1:55433/vendor_onboarding';const {ensureDatabase}=await import('../lib/db/setup');const {pool}=await import('../lib/db');await ensureDatabase();await ensureDatabase();const {rows}=await pool.query('SELECT (SELECT count(*) FROM vendors)::int vendors,(SELECT count(*) FROM extraction_cache)::int cache,(SELECT count(*) FROM blocklist)::int blocks,(SELECT count(*) FROM app_migrations)::int migrations');assert.equal(rows[0].vendors,4);assert.equal(rows[0].blocks,1);assert.equal(rows[0].migrations,6);assert.equal(rows[0].cache,0);console.log('M1 REAL POSTGRES PASS:',rows[0]);await pool.end();}finally{await pg.stop();rmSync(dir,{recursive:true,force:true});}}
+main().catch(e=>{console.error(e);process.exitCode=1;});

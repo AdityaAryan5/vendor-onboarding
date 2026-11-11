@@ -1,0 +1,57 @@
+{
+  "name": "vendor-onboarding",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "node --import tsx scripts/dev.ts",
+    "build": "next build",
+    "start": "next start --hostname 0.0.0.0",
+    "db:local": "node --import tsx scripts/local-postgres.ts",
+    "db:setup": "node --import tsx scripts/setup.ts",
+    "generate-test-data": "node --import tsx scripts/generate-test-data.ts",
+    "test": "vitest run",
+    "test:integration": "node --import tsx scripts/integration.ts",
+    "typecheck": "tsc --noEmit",
+    "test:m1": "node --import tsx scripts/verify-m1.ts",
+    "doctor": "node --import tsx scripts/doctor.ts",
+    "test:local": "node --import tsx scripts/verify-local.ts",
+    "test:hosted": "VERIFY_WORKSPACE=true node --import tsx scripts/verify-hosted.ts",
+    "test:m3": "VERIFY_WORKSPACE=true VERIFY_M3=true node --import tsx scripts/verify-hosted.ts",
+    "test:m6": "node scripts/verify-m6-all.mjs",
+    "test:limits": "VERIFY_WORKSPACE=true VERIFY_LIMITS=true node --import tsx scripts/verify-hosted.ts",
+    "test:m4": "node --import tsx scripts/verify-m4.ts"
+  },
+  "dependencies": {
+    "@radix-ui/react-slot": "^1.2.4",
+    "@thednp/dommatrix": "^3.1.2",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "dotenv": "^17.2.3",
+    "drizzle-orm": "^0.44.7",
+    "lucide-react": "^0.468.0",
+    "next": "16.4.6",
+    "pdf-lib": "^1.17.1",
+    "pdfjs-dist": "^6.5.438",
+    "pg": "^8.16.3",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "sharp": "^0.34.5",
+    "tailwind-merge": "^3.4.0",
+    "zod": "^4.1.12"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.17",
+    "@types/node": "^22.19.0",
+    "@types/pg": "^8.15.6",
+    "@types/react": "^19.2.5",
+    "@types/react-dom": "^19.2.3",
+    "embedded-postgres": "18.6.0-beta.19",
+    "tailwindcss": "^4.1.17",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.4"
+  },
+  "engines": {
+    "node": ">=22.13.0"
+  }
+}

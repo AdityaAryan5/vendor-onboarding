@@ -1,0 +1,4 @@
+ALTER TABLE cases ADD COLUMN current_decision_id text REFERENCES decisions(id);
+UPDATE cases c SET current_decision_id=(SELECT d.id FROM decisions d JOIN revisions r ON r.id=d.revision_id WHERE r.case_id=c.id AND r.number=c.current_revision ORDER BY d.created_at DESC LIMIT 1);
+CREATE TABLE reviewer_actions(id text PRIMARY KEY,case_id text NOT NULL REFERENCES cases(id),revision_id text NOT NULL REFERENCES revisions(id),decision_id text NOT NULL REFERENCES decisions(id),request_key text NOT NULL UNIQUE,payload_hash text NOT NULL,actor_id text NOT NULL,actor text NOT NULL,action text NOT NULL,note text NOT NULL,resolutions jsonb NOT NULL DEFAULT '[]',checks_snapshot jsonb NOT NULL,created_at timestamptz NOT NULL DEFAULT now());
+CREATE TRIGGER reviewer_action_immutable BEFORE UPDATE OR DELETE ON reviewer_actions FOR EACH ROW EXECUTE FUNCTION protect_audit();

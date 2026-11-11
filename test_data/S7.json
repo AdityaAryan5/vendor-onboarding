@@ -1,0 +1,124 @@
+{
+  "id": "S7",
+  "title": "Invalid checksum",
+  "form": {
+    "legalName": "Acme S7 Private Limited",
+    "tradingName": "",
+    "country": "IN",
+    "email": "vendor@example.test",
+    "address": "12 Demo Industrial Road, Mumbai",
+    "state": "27",
+    "pan": "AABCA1208A",
+    "gstin": "27AABCA1208A1Z0",
+    "account": "000076543208",
+    "ifsc": "DEMO0123456",
+    "holderName": "Acme S7 Private Limited"
+  },
+  "files": {
+    "gst": "S7-gst.pdf",
+    "pan": "S7-pan.pdf",
+    "bank": "S7-bank.pdf"
+  },
+  "hashes": {
+    "gst": "40c2bcf24c15c38029309d7ad0cce115d4c5decc9872cc130acc3d10ea489605",
+    "pan": "92ee84520a237fa4647a64fbed4c0ec660dadc3d63e59ad8b32c5781e8ed298b",
+    "bank": "962c98213bef706f8008686ef4e807a5451de5a34332e8170e2a98c690fe1cc4"
+  },
+  "evidence": {
+    "gst": {
+      "type": "gst",
+      "confidence": 0.99,
+      "fields": {
+        "name": "Acme S7 Private Limited",
+        "pan": null,
+        "gstin": "27AABCA1208A1Z0",
+        "state": "27",
+        "account": null,
+        "ifsc": null,
+        "expiry": null
+      },
+      "evidence": [
+        {
+          "field": "name",
+          "value": "Acme S7 Private Limited",
+          "page": 1,
+          "confidence": 0.99
+        },
+        {
+          "field": "gstin",
+          "value": "27AABCA1208A1Z0",
+          "page": 1,
+          "confidence": 0.99
+        },
+        {
+          "field": "state",
+          "value": "27",
+          "page": 1,
+          "confidence": 0.99
+        }
+      ]
+    },
+    "pan": {
+      "type": "pan",
+      "confidence": 0.99,
+      "fields": {
+        "name": "Acme S7 Private Limited",
+        "pan": "AABCA1208A",
+        "gstin": null,
+        "state": null,
+        "account": null,
+        "ifsc": null,
+        "expiry": null
+      },
+      "evidence": [
+        {
+          "field": "name",
+          "value": "Acme S7 Private Limited",
+          "page": 1,
+          "confidence": 0.99
+        },
+        {
+          "field": "pan",
+          "value": "AABCA1208A",
+          "page": 1,
+          "confidence": 0.99
+        }
+      ]
+    },
+    "bank": {
+      "type": "bank",
+      "confidence": 0.99,
+      "fields": {
+        "name": "Acme S7 Private Limited",
+        "pan": null,
+        "gstin": null,
+        "state": null,
+        "account": "000076543208",
+        "ifsc": "DEMO0123456",
+        "expiry": null
+      },
+      "evidence": [
+        {
+          "field": "name",
+          "value": "Acme S7 Private Limited",
+          "page": 1,
+          "confidence": 0.99
+        },
+        {
+          "field": "account",
+          "value": "000076543208",
+          "page": 1,
+          "confidence": 0.99
+        },
+        {
+          "field": "ifsc",
+          "value": "DEMO0123456",
+          "page": 1,
+          "confidence": 0.99
+        }
+      ]
+    }
+  },
+  "expected": "REJECTED",
+  "cacheProvenance": "fixture-curated: expected evidence from synthetic PDF source, not a fresh AI extraction"
+}

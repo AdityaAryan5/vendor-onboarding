@@ -1,0 +1,3 @@
+import {readFile} from 'node:fs/promises';
+import {session} from '@/lib/session';
+export async function GET(_req:Request,{params}:{params:Promise<{id:string;slot:string}>}){if(!await session())return new Response(null,{status:401});const {id,slot}=await params;const manifest=JSON.parse(await readFile('test_data/manifest.json','utf8'));const s=manifest.find((s:any)=>s.id===id);if(!s||!['gst','pan','bank'].includes(slot))return new Response(null,{status:404});return new Response(new Uint8Array(await readFile(`test_data/${s.files[slot]}`)),{headers:{'Content-Type':'application/pdf','Cache-Control':'private, no-store'}});}

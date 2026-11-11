@@ -1,0 +1,124 @@
+{
+  "id": "S5",
+  "title": "Existing bank account",
+  "form": {
+    "legalName": "Acme S5 Private Limited",
+    "tradingName": "",
+    "country": "IN",
+    "email": "vendor@example.test",
+    "address": "12 Demo Industrial Road, Mumbai",
+    "state": "27",
+    "pan": "AABCA1206A",
+    "gstin": "27AABCA1206A1ZN",
+    "account": "001122334455",
+    "ifsc": "DEMO0123456",
+    "holderName": "Acme S5 Private Limited"
+  },
+  "files": {
+    "gst": "S5-gst.pdf",
+    "pan": "S5-pan.pdf",
+    "bank": "S5-bank.pdf"
+  },
+  "hashes": {
+    "gst": "52622dafe3c820bc55aa716821df739e3e4baa361607c215442ea3e5c681fe0c",
+    "pan": "e75bb6fc0a6100f246ab64755adc84ea913c8500f9062afdb354499ed4a7e4f7",
+    "bank": "a678dab55ee0bf88de215c628191d9a522513ed1d14ad7fb9c0a33fff2c861a6"
+  },
+  "evidence": {
+    "gst": {
+      "type": "gst",
+      "confidence": 0.99,
+      "fields": {
+        "name": "Acme S5 Private Limited",
+        "pan": null,
+        "gstin": "27AABCA1206A1ZN",
+        "state": "27",
+        "account": null,
+        "ifsc": null,
+        "expiry": null
+      },
+      "evidence": [
+        {
+          "field": "name",
+          "value": "Acme S5 Private Limited",
+          "page": 1,
+          "confidence": 0.99
+        },
+        {
+          "field": "gstin",
+          "value": "27AABCA1206A1ZN",
+          "page": 1,
+          "confidence": 0.99
+        },
+        {
+          "field": "state",
+          "value": "27",
+          "page": 1,
+          "confidence": 0.99
+        }
+      ]
+    },
+    "pan": {
+      "type": "pan",
+      "confidence": 0.99,
+      "fields": {
+        "name": "Acme S5 Private Limited",
+        "pan": "AABCA1206A",
+        "gstin": null,
+        "state": null,
+        "account": null,
+        "ifsc": null,
+        "expiry": null
+      },
+      "evidence": [
+        {
+          "field": "name",
+          "value": "Acme S5 Private Limited",
+          "page": 1,
+          "confidence": 0.99
+        },
+        {
+          "field": "pan",
+          "value": "AABCA1206A",
+          "page": 1,
+          "confidence": 0.99
+        }
+      ]
+    },
+    "bank": {
+      "type": "bank",
+      "confidence": 0.99,
+      "fields": {
+        "name": "Acme S5 Private Limited",
+        "pan": null,
+        "gstin": null,
+        "state": null,
+        "account": "001122334455",
+        "ifsc": "DEMO0123456",
+        "expiry": null
+      },
+      "evidence": [
+        {
+          "field": "name",
+          "value": "Acme S5 Private Limited",
+          "page": 1,
+          "confidence": 0.99
+        },
+        {
+          "field": "account",
+          "value": "001122334455",
+          "page": 1,
+          "confidence": 0.99
+        },
+        {
+          "field": "ifsc",
+          "value": "DEMO0123456",
+          "page": 1,
+          "confidence": 0.99
+        }
+      ]
+    }
+  },
+  "expected": "PENDING_REVIEWER",
+  "cacheProvenance": "fixture-curated: expected evidence from synthetic PDF source, not a fresh AI extraction"
+}

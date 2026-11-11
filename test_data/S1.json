@@ -1,0 +1,124 @@
+{
+  "id": "S1",
+  "title": "Clean application",
+  "form": {
+    "legalName": "Acme Pvt Ltd",
+    "tradingName": "",
+    "country": "IN",
+    "email": "vendor@example.test",
+    "address": "12 Demo Industrial Road, Mumbai",
+    "state": "27",
+    "pan": "AABCA1200A",
+    "gstin": "27AABCA1200A1ZT",
+    "account": "000076543200",
+    "ifsc": "DEMO0123456",
+    "holderName": "ACME Private Limited"
+  },
+  "files": {
+    "gst": "S1-gst.pdf",
+    "pan": "S1-pan.pdf",
+    "bank": "S1-bank.pdf"
+  },
+  "hashes": {
+    "gst": "e161a7c58079c3ba6a57133d4355d4d37ffd83e1428aaa3a0b6ce704934d74a6",
+    "pan": "a74d5e1c32fdd1770fbd3a4c5b0473b012eecb12712f3d1456690a452aad4c88",
+    "bank": "499410f2506a1c5066b578e37bae302f5c611400ca32ab9dc3d11fb3ca2fec4b"
+  },
+  "evidence": {
+    "gst": {
+      "type": "gst",
+      "confidence": 0.99,
+      "fields": {
+        "name": "Acme Pvt Ltd",
+        "pan": null,
+        "gstin": "27AABCA1200A1ZT",
+        "state": "27",
+        "account": null,
+        "ifsc": null,
+        "expiry": null
+      },
+      "evidence": [
+        {
+          "field": "name",
+          "value": "Acme Pvt Ltd",
+          "page": 1,
+          "confidence": 0.99
+        },
+        {
+          "field": "gstin",
+          "value": "27AABCA1200A1ZT",
+          "page": 1,
+          "confidence": 0.99
+        },
+        {
+          "field": "state",
+          "value": "27",
+          "page": 1,
+          "confidence": 0.99
+        }
+      ]
+    },
+    "pan": {
+      "type": "pan",
+      "confidence": 0.99,
+      "fields": {
+        "name": "Acme Pvt Ltd",
+        "pan": "AABCA1200A",
+        "gstin": null,
+        "state": null,
+        "account": null,
+        "ifsc": null,
+        "expiry": null
+      },
+      "evidence": [
+        {
+          "field": "name",
+          "value": "Acme Pvt Ltd",
+          "page": 1,
+          "confidence": 0.99
+        },
+        {
+          "field": "pan",
+          "value": "AABCA1200A",
+          "page": 1,
+          "confidence": 0.99
+        }
+      ]
+    },
+    "bank": {
+      "type": "bank",
+      "confidence": 0.99,
+      "fields": {
+        "name": "ACME Private Limited",
+        "pan": null,
+        "gstin": null,
+        "state": null,
+        "account": "000076543200",
+        "ifsc": "DEMO0123456",
+        "expiry": null
+      },
+      "evidence": [
+        {
+          "field": "name",
+          "value": "ACME Private Limited",
+          "page": 1,
+          "confidence": 0.99
+        },
+        {
+          "field": "account",
+          "value": "000076543200",
+          "page": 1,
+          "confidence": 0.99
+        },
+        {
+          "field": "ifsc",
+          "value": "DEMO0123456",
+          "page": 1,
+          "confidence": 0.99
+        }
+      ]
+    }
+  },
+  "expected": "APPROVED",
+  "cacheProvenance": "fixture-curated: expected evidence from synthetic PDF source, not a fresh AI extraction"
+}

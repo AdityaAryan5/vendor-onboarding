@@ -1,0 +1,3 @@
+import {limitRequest} from '@/lib/request-limits';
+import {session} from '@/lib/session';import {caseDetail} from '@/lib/workflow';
+export async function GET(_req:Request,{params}:{params:Promise<{id:string}>}){const limited=await limitRequest(_req,'read');if(limited)return limited;const s=await session();if(!s)return Response.json({error:'Sign in first.'},{status:401});if(new URL(_req.url).searchParams.get('scope')==='workspace'&&s.role!=='reviewer')return Response.json({error:'Reviewer role required.'},{status:403});const {id}=await params;const detail=await caseDetail(id,s.id,new URL(_req.url).searchParams.get('scope')==='workspace');return detail?Response.json(detail):Response.json({error:'Case not found.'},{status:404});}

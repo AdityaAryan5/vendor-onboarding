@@ -1,0 +1,11 @@
+import {limitRequest,limitedFormData,checkFileSize,RequestLimitError} from '@/lib/request-limits';
+import {after} from 'next/server';import {z} from 'zod';
+import {session,sameOrigin} from '@/lib/session';import {resubmitCase,CorrectionError} from '@/lib/resubmit';import {executeRun,type Upload} from '@/lib/workflow';import {india} from '@/config/countries/india';
+export const runtime='nodejs';export const maxDuration=60;
+export async function POST(req:Request,{params}:{params:Promise<{id:string}>}){
+ const limited=await limitRequest(req,'write');if(limited)return limited;const s=await session();if(!s)return Response.json({error:'Sign in first.'},{status:401});
+ if(s.role!=='vendor')return Response.json({error:'Switch to Vendor to resubmit.'},{status:403});try{sameOrigin(req);if(Number(req.headers.get('content-length')||0)>3_500_000)return Response.json({error:'Combined PDFs must be below 3 MB.'},{status:413});const {id}=await params;const body=await limitedFormData(req);const revision=z.coerce.number().int().positive().parse(body.get('expectedRevision'));const key=z.string().uuid().parse(body.get('idempotencyKey'));const raw=z.record(z.string(),z.string().max(500)).parse(JSON.parse(String(body.get('values')||'{}')));const changes:Record<string,string>={};for(const [k,v]of Object.entries(raw))changes[k]=['country','pan','gstin','ifsc'].includes(k)?v.trim().toUpperCase():v.trim();
+ const uploads:Upload[]=[];let size=0;for(const [key,value]of body.entries()){if(value instanceof File){checkFileSize(value);if(!india.slots.includes(key as any))throw new CorrectionError('Unknown document slot.');size+=value.size;if(size>3_000_000)throw new CorrectionError('Combined PDFs must be below 3 MB.',413);if(value.size)uploads.push({slot:key as Upload['slot'],filename:value.name.slice(0,150),bytes:Buffer.from(await value.arrayBuffer())});}}
+ const created=await resubmitCase(id,s.id,revision,key,changes,uploads);after(()=>executeRun(created.caseId,created.runId,()=>{}));return Response.json(created,{status:created.existing?200:202});
+ }catch(e){if(e instanceof CorrectionError||e instanceof RequestLimitError)return Response.json({error:e.message},{status:e.status});console.error('Resubmission failed',e);return Response.json({error:'Corrections could not be accepted. Check the requested fields and files.'},{status:400});}
+}

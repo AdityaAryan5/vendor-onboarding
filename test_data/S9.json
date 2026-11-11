@@ -1,0 +1,124 @@
+{
+  "id": "S9",
+  "title": "Low-confidence scan",
+  "form": {
+    "legalName": "Acme S9 Private Limited",
+    "tradingName": "",
+    "country": "IN",
+    "email": "vendor@example.test",
+    "address": "12 Demo Industrial Road, Mumbai",
+    "state": "27",
+    "pan": "AABCA1210A",
+    "gstin": "27AABCA1210A1ZR",
+    "account": "000076543210",
+    "ifsc": "DEMO0123456",
+    "holderName": "Acme S9 Private Limited"
+  },
+  "files": {
+    "gst": "S9-gst.pdf",
+    "pan": "S9-pan.pdf",
+    "bank": "S9-bank.pdf"
+  },
+  "hashes": {
+    "gst": "b86a3ce8b101612156b49cb7159b913e41cd950433e184e03359b321acbe4223",
+    "pan": "193f783f56d767c18af7634eb8aeb024d44acd0811b4aaf6c7bb8e648aba1bd1",
+    "bank": "9cc5a045442486cf2ebc2a2803a42d219d7009018358ea727a422f65161e6eec"
+  },
+  "evidence": {
+    "gst": {
+      "type": "gst",
+      "confidence": 0.99,
+      "fields": {
+        "name": "Acme S9 Private Limited",
+        "pan": null,
+        "gstin": "27AABCA1210A1ZR",
+        "state": "27",
+        "account": null,
+        "ifsc": null,
+        "expiry": null
+      },
+      "evidence": [
+        {
+          "field": "name",
+          "value": "Acme S9 Private Limited",
+          "page": 1,
+          "confidence": 0.99
+        },
+        {
+          "field": "gstin",
+          "value": "27AABCA1210A1ZR",
+          "page": 1,
+          "confidence": 0.99
+        },
+        {
+          "field": "state",
+          "value": "27",
+          "page": 1,
+          "confidence": 0.99
+        }
+      ]
+    },
+    "pan": {
+      "type": "pan",
+      "confidence": 0.99,
+      "fields": {
+        "name": "Acme S9 Private Limited",
+        "pan": "AABCA1210A",
+        "gstin": null,
+        "state": null,
+        "account": null,
+        "ifsc": null,
+        "expiry": null
+      },
+      "evidence": [
+        {
+          "field": "name",
+          "value": "Acme S9 Private Limited",
+          "page": 1,
+          "confidence": 0.99
+        },
+        {
+          "field": "pan",
+          "value": "AABCA1210A",
+          "page": 1,
+          "confidence": 0.99
+        }
+      ]
+    },
+    "bank": {
+      "type": "bank",
+      "confidence": 0.42,
+      "fields": {
+        "name": "Acme S9 Private Limited",
+        "pan": null,
+        "gstin": null,
+        "state": null,
+        "account": "000076543210",
+        "ifsc": "DEMO0123456",
+        "expiry": null
+      },
+      "evidence": [
+        {
+          "field": "name",
+          "value": "Acme S9 Private Limited",
+          "page": 1,
+          "confidence": 0.42
+        },
+        {
+          "field": "account",
+          "value": "000076543210",
+          "page": 1,
+          "confidence": 0.42
+        },
+        {
+          "field": "ifsc",
+          "value": "DEMO0123456",
+          "page": 1,
+          "confidence": 0.42
+        }
+      ]
+    }
+  },
+  "expected": "PENDING_REVIEWER",
+  "cacheProvenance": "fixture-curated: expected evidence from synthetic PDF source, not a fresh AI extraction"
+}

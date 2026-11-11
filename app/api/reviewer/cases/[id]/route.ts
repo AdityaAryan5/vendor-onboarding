@@ -1,0 +1,3 @@
+import {requireReviewer} from '@/lib/session';import {limitRequest} from '@/lib/request-limits';import {reviewDetail,ReviewError} from '@/lib/review';
+export const dynamic='force-dynamic';
+export async function GET(req:Request,{params}:{params:Promise<{id:string}>}){const actor=await requireReviewer();if(actor instanceof Response)return actor;const limited=await limitRequest(req,'read');if(limited)return limited;try{return Response.json(await reviewDetail((await params).id,actor),{headers:{'Cache-Control':'no-store'}});}catch(e){return Response.json({error:e instanceof ReviewError?e.message:'Review data could not be loaded.'},{status:e instanceof ReviewError?e.status:500});}}

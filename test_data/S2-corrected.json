@@ -1,0 +1,124 @@
+{
+  "id": "S2-corrected",
+  "title": "Corrected bank proof",
+  "form": {
+    "legalName": "Acme S2 Private Limited",
+    "tradingName": "",
+    "country": "IN",
+    "email": "vendor@example.test",
+    "address": "12 Demo Industrial Road, Mumbai",
+    "state": "27",
+    "pan": "AABCA1201A",
+    "gstin": "27AABCA1201A1ZS",
+    "account": "000076543201",
+    "ifsc": "DEMO0123456",
+    "holderName": "Acme S2 Private Limited"
+  },
+  "files": {
+    "gst": "S2-corrected-gst.pdf",
+    "pan": "S2-corrected-pan.pdf",
+    "bank": "S2-corrected-bank.pdf"
+  },
+  "hashes": {
+    "gst": "14982c50ba485bc1651db7cafdcde1d72bcf12097ecc6e3e74dd6eb284fef3fa",
+    "pan": "ffc4094205fb5cd115733f411749c2a038d69d5b4193390c7def8b64aff7ff26",
+    "bank": "0e87df1d473b7ce835b6bcdf58588b85ecc2f244d167c515a1b59b275a0a6796"
+  },
+  "evidence": {
+    "gst": {
+      "type": "gst",
+      "confidence": 0.99,
+      "fields": {
+        "name": "Acme S2 Private Limited",
+        "pan": null,
+        "gstin": "27AABCA1201A1ZS",
+        "state": "27",
+        "account": null,
+        "ifsc": null,
+        "expiry": null
+      },
+      "evidence": [
+        {
+          "field": "name",
+          "value": "Acme S2 Private Limited",
+          "page": 1,
+          "confidence": 0.99
+        },
+        {
+          "field": "gstin",
+          "value": "27AABCA1201A1ZS",
+          "page": 1,
+          "confidence": 0.99
+        },
+        {
+          "field": "state",
+          "value": "27",
+          "page": 1,
+          "confidence": 0.99
+        }
+      ]
+    },
+    "pan": {
+      "type": "pan",
+      "confidence": 0.99,
+      "fields": {
+        "name": "Acme S2 Private Limited",
+        "pan": "AABCA1201A",
+        "gstin": null,
+        "state": null,
+        "account": null,
+        "ifsc": null,
+        "expiry": null
+      },
+      "evidence": [
+        {
+          "field": "name",
+          "value": "Acme S2 Private Limited",
+          "page": 1,
+          "confidence": 0.99
+        },
+        {
+          "field": "pan",
+          "value": "AABCA1201A",
+          "page": 1,
+          "confidence": 0.99
+        }
+      ]
+    },
+    "bank": {
+      "type": "bank",
+      "confidence": 0.99,
+      "fields": {
+        "name": "Acme S2 Private Limited",
+        "pan": null,
+        "gstin": null,
+        "state": null,
+        "account": "000076543201",
+        "ifsc": "DEMO0123456",
+        "expiry": null
+      },
+      "evidence": [
+        {
+          "field": "name",
+          "value": "Acme S2 Private Limited",
+          "page": 1,
+          "confidence": 0.99
+        },
+        {
+          "field": "account",
+          "value": "000076543201",
+          "page": 1,
+          "confidence": 0.99
+        },
+        {
+          "field": "ifsc",
+          "value": "DEMO0123456",
+          "page": 1,
+          "confidence": 0.99
+        }
+      ]
+    }
+  },
+  "expected": "APPROVED",
+  "cacheProvenance": "fixture-curated: expected evidence from synthetic PDF source, not a fresh AI extraction"
+}

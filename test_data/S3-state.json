@@ -1,0 +1,124 @@
+{
+  "id": "S3-state",
+  "title": "Registration state conflict",
+  "form": {
+    "legalName": "Acme S3 state Private Limited",
+    "tradingName": "",
+    "country": "IN",
+    "email": "vendor@example.test",
+    "address": "12 Demo Industrial Road, Mumbai",
+    "state": "29",
+    "pan": "AABCA1204A",
+    "gstin": "27AABCA1204A1ZP",
+    "account": "000076543204",
+    "ifsc": "DEMO0123456",
+    "holderName": "Acme S3 state Private Limited"
+  },
+  "files": {
+    "gst": "S3-state-gst.pdf",
+    "pan": "S3-state-pan.pdf",
+    "bank": "S3-state-bank.pdf"
+  },
+  "hashes": {
+    "gst": "0469e0e4cb61c5e7ccf08915a20dd5d1509097063545de93e05bd4f6a6a7cc99",
+    "pan": "a6bdc6d6ce3ccdb23ffadb148a8f3f8b27bd0e790bb182b7e6b97ea9cb8cfbf3",
+    "bank": "d9762e409123ba5b094d961f04369bc25f79c99199c7e77062db5c678054a503"
+  },
+  "evidence": {
+    "gst": {
+      "type": "gst",
+      "confidence": 0.99,
+      "fields": {
+        "name": "Acme S3 state Private Limited",
+        "pan": null,
+        "gstin": "27AABCA1204A1ZP",
+        "state": "27",
+        "account": null,
+        "ifsc": null,
+        "expiry": null
+      },
+      "evidence": [
+        {
+          "field": "name",
+          "value": "Acme S3 state Private Limited",
+          "page": 1,
+          "confidence": 0.99
+        },
+        {
+          "field": "gstin",
+          "value": "27AABCA1204A1ZP",
+          "page": 1,
+          "confidence": 0.99
+        },
+        {
+          "field": "state",
+          "value": "27",
+          "page": 1,
+          "confidence": 0.99
+        }
+      ]
+    },
+    "pan": {
+      "type": "pan",
+      "confidence": 0.99,
+      "fields": {
+        "name": "Acme S3 state Private Limited",
+        "pan": "AABCA1204A",
+        "gstin": null,
+        "state": null,
+        "account": null,
+        "ifsc": null,
+        "expiry": null
+      },
+      "evidence": [
+        {
+          "field": "name",
+          "value": "Acme S3 state Private Limited",
+          "page": 1,
+          "confidence": 0.99
+        },
+        {
+          "field": "pan",
+          "value": "AABCA1204A",
+          "page": 1,
+          "confidence": 0.99
+        }
+      ]
+    },
+    "bank": {
+      "type": "bank",
+      "confidence": 0.99,
+      "fields": {
+        "name": "Acme S3 state Private Limited",
+        "pan": null,
+        "gstin": null,
+        "state": null,
+        "account": "000076543204",
+        "ifsc": "DEMO0123456",
+        "expiry": null
+      },
+      "evidence": [
+        {
+          "field": "name",
+          "value": "Acme S3 state Private Limited",
+          "page": 1,
+          "confidence": 0.99
+        },
+        {
+          "field": "account",
+          "value": "000076543204",
+          "page": 1,
+          "confidence": 0.99
+        },
+        {
+          "field": "ifsc",
+          "value": "DEMO0123456",
+          "page": 1,
+          "confidence": 0.99
+        }
+      ]
+    }
+  },
+  "expected": "PENDING_REVIEWER",
+  "cacheProvenance": "fixture-curated: expected evidence from synthetic PDF source, not a fresh AI extraction"
+}

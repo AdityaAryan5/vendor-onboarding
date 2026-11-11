@@ -1,0 +1,124 @@
+{
+  "id": "S6",
+  "title": "Blocklisted account",
+  "form": {
+    "legalName": "Acme S6 Private Limited",
+    "tradingName": "",
+    "country": "IN",
+    "email": "vendor@example.test",
+    "address": "12 Demo Industrial Road, Mumbai",
+    "state": "27",
+    "pan": "AABCA1207A",
+    "gstin": "27AABCA1207A1ZM",
+    "account": "009999888877",
+    "ifsc": "DEMO0123456",
+    "holderName": "Acme S6 Private Limited"
+  },
+  "files": {
+    "gst": "S6-gst.pdf",
+    "pan": "S6-pan.pdf",
+    "bank": "S6-bank.pdf"
+  },
+  "hashes": {
+    "gst": "0c47e9dd6cc42b3831f7ac887dbb8a8371b632ecc04d5cb14b660a428fdfa309",
+    "pan": "79a912c3f3c1eb6ae7172092189fd1eaed3093caa26d0d85eefdb1e481fc8143",
+    "bank": "f9914c457b50c6bc6f29ca108b74d21ed2077365cc3b67216914abe32fa62d38"
+  },
+  "evidence": {
+    "gst": {
+      "type": "gst",
+      "confidence": 0.99,
+      "fields": {
+        "name": "Acme S6 Private Limited",
+        "pan": null,
+        "gstin": "27AABCA1207A1ZM",
+        "state": "27",
+        "account": null,
+        "ifsc": null,
+        "expiry": null
+      },
+      "evidence": [
+        {
+          "field": "name",
+          "value": "Acme S6 Private Limited",
+          "page": 1,
+          "confidence": 0.99
+        },
+        {
+          "field": "gstin",
+          "value": "27AABCA1207A1ZM",
+          "page": 1,
+          "confidence": 0.99
+        },
+        {
+          "field": "state",
+          "value": "27",
+          "page": 1,
+          "confidence": 0.99
+        }
+      ]
+    },
+    "pan": {
+      "type": "pan",
+      "confidence": 0.99,
+      "fields": {
+        "name": "Acme S6 Private Limited",
+        "pan": "AABCA1207A",
+        "gstin": null,
+        "state": null,
+        "account": null,
+        "ifsc": null,
+        "expiry": null
+      },
+      "evidence": [
+        {
+          "field": "name",
+          "value": "Acme S6 Private Limited",
+          "page": 1,
+          "confidence": 0.99
+        },
+        {
+          "field": "pan",
+          "value": "AABCA1207A",
+          "page": 1,
+          "confidence": 0.99
+        }
+      ]
+    },
+    "bank": {
+      "type": "bank",
+      "confidence": 0.99,
+      "fields": {
+        "name": "Acme S6 Private Limited",
+        "pan": null,
+        "gstin": null,
+        "state": null,
+        "account": "009999888877",
+        "ifsc": "DEMO0123456",
+        "expiry": null
+      },
+      "evidence": [
+        {
+          "field": "name",
+          "value": "Acme S6 Private Limited",
+          "page": 1,
+          "confidence": 0.99
+        },
+        {
+          "field": "account",
+          "value": "009999888877",
+          "page": 1,
+          "confidence": 0.99
+        },
+        {
+          "field": "ifsc",
+          "value": "DEMO0123456",
+          "page": 1,
+          "confidence": 0.99
+        }
+      ]
+    }
+  },
+  "expected": "REJECTED",
+  "cacheProvenance": "fixture-curated: expected evidence from synthetic PDF source, not a fresh AI extraction"
+}
