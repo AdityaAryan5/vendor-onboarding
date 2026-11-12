@@ -1,0 +1,1 @@
+export function extractionLabel(d:{source?:string|null;error?:unknown}){return d.source==='gemini'?'AI (Gemini)':d.source==='parser_fallback'?'Parser (fallback)':d.source==='cache'?'Cached extraction used':d.source==='pdf'?'PDF text extraction':d.source==='ocr'?'Local OCR':d.error?'Needs review':'Queued';}
